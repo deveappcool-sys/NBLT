@@ -1,0 +1,12 @@
+Lcom/bililite/tv/MainActivity;
+HSPLcom/bililite/tv/MainActivity**->**(**)**
+HSPLcom/bililite/tv/ui/home/**->**(**)**
+HSPLcom/bililite/tv/ui/components/CinematicSideRail**->**(**)**
+HSPLcom/bililite/tv/ui/components/VideoCard**->**(**)**
+HSPLcom/bililite/tv/ui/components/TvBackground**->**(**)**
+HSPLcom/bililite/tv/theme/**->**(**)**
+HSPLcom/bililite/tv/data/repository/HistoryRepository**->**(**)**
+HSPLcom/bililite/tv/data/repository/DynamicRepository**->**(**)**
+HSPLcom/bililite/tv/data/api/BilibiliHistoryApi**->**(**)**
+HSPLcom/bililite/tv/data/api/BilibiliDynamicApi**->**(**)**
+HSPLcom/bililite/tv/data/api/BilibiliApiClient**->**(**)**

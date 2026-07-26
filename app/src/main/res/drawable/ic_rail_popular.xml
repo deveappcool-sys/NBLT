@@ -1,0 +1,22 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+    <!-- Outer flame -->
+    <path
+        android:fillColor="#00000000"
+        android:strokeColor="#FFFFFF"
+        android:strokeWidth="2"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round"
+        android:pathData="M12,21 C12,21 3,14 3,8 C3,4 7,1 12,1 C17,1 21,4 21,8 C21,14 12,21 12,21 Z" />
+    <!-- Inner flicker -->
+    <path
+        android:fillColor="#00000000"
+        android:strokeColor="#FFFFFF"
+        android:strokeWidth="1.5"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round"
+        android:pathData="M12,17 C12,17 6,12 6,9 C6,7 8,5 12,5 C16,5 18,7 18,9 C18,12 12,17 12,17 Z" />
+</vector>

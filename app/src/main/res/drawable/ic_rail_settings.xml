@@ -1,0 +1,22 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+    <!-- Outer ring with teeth -->
+    <path
+        android:fillColor="#00000000"
+        android:strokeColor="#FFFFFF"
+        android:strokeWidth="2"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round"
+        android:pathData="M12,1.5 L13.5,4 L16,3 L17.5,5.5 L15,7 L19.5,10.5 L17.5,12 L19.5,13.5 L15,17 L17.5,18.5 L16,21 L13.5,20 L12,22.5 L10.5,20 L8,21 L6.5,18.5 L9,17 L4.5,13.5 L6.5,12 L4.5,10.5 L9,7 L6.5,5.5 L8,3 L10.5,4 Z" />
+    <!-- Center circle -->
+    <path
+        android:fillColor="#00000000"
+        android:strokeColor="#FFFFFF"
+        android:strokeWidth="2"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round"
+        android:pathData="M10,10 h4 v4 h-4 Z" />
+</vector>
