@@ -17,7 +17,7 @@ if (keystorePropertiesFile.exists()) {
 }
 
 android {
-    namespace = "com.bililite.tv"
+    namespace = "com.nblt.tv"
     compileSdk {
         version = release(36) {
             minorApiLevel = 1
@@ -25,7 +25,7 @@ android {
     }
 
     defaultConfig {
-        applicationId = "com.bililite.tv"
+        applicationId = "com.nblt.tv"
         minSdk = 23
         targetSdk = 35
         versionCode = 44

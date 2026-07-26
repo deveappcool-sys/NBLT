@@ -12,14 +12,14 @@
         android:required="false" />
 
     <application
-        android:name=".BiliLiteApplication"
+        android:name=".NbltApplication"
         android:allowBackup="false"
         android:banner="@drawable/tv_banner"
         android:icon="@mipmap/ic_launcher"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/Theme.BiliLiteTV">
+        android:theme="@style/Theme.NBLT">
         <activity
             android:name=".MainActivity"
             android:exported="true">
