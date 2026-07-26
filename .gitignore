@@ -39,3 +39,6 @@ google-services.json
 
 # Release signing credentials
 keystore.properties
+
+# Android Studio signed APK output
+app/release/

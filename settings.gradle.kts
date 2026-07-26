@@ -14,5 +14,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "BiliLiteTV"
+rootProject.name = "NBLT"
 include(":app")
