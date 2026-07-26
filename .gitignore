@@ -36,3 +36,6 @@ google-services.json
 # macOS metadata
 .DS_Store
 ._*
+
+# Release signing credentials
+keystore.properties
