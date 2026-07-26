@@ -58,6 +58,7 @@ fun VideoGrid(
     onFocusRestored: () -> Unit = {},
     requestInitialFocus: Boolean = false,
     entryFocusRequester: FocusRequester? = null,
+    topFocusRequester: FocusRequester? = null,
     cardStyle: VideoCardStyle = VideoCardStyle.Standard,
     showProgress: Boolean = false
 ) {
@@ -274,12 +275,20 @@ fun VideoGrid(
                 focusRequester = focusRequesters.getOrNull(index),
                 blockDownFocus = false,
                 onVerticalFocusMove = { rowDelta ->
+                    val isTopEdge = rowDelta < 0 && index < columnCount
                     val isBottomEdge = rowDelta > 0 && index + columnCount >= videos.size
-                    if (isBottomEdge && loadMoreError != null && onLoadMore != null) {
-                        onLoadMore()
-                        true
-                    } else {
-                        verticalFocusHandler(index, rowDelta)
+                    when {
+                        isTopEdge && topFocusRequester != null -> {
+                            runCatching {
+                                topFocusRequester.requestFocus()
+                                true
+                            }.getOrDefault(false)
+                        }
+                        isBottomEdge && loadMoreError != null && onLoadMore != null -> {
+                            onLoadMore()
+                            true
+                        }
+                        else -> verticalFocusHandler(index, rowDelta)
                     }
                 },
                 onCardFocusChanged = focusHandler,

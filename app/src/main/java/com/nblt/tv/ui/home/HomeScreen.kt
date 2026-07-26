@@ -1137,7 +1137,8 @@ private fun DynamicSuccessContent(
                         onVideoFocused(HomeNavTabs.DYNAMIC, video, index, null)
                     },
                     onFocusRestored = onHomeVideoFocusRestored,
-                    entryFocusRequester = entryFocusRequester
+                    entryFocusRequester = entryFocusRequester,
+                    topFocusRequester = filterFocusRequester
                 )
             }
         } else {
@@ -1159,7 +1160,8 @@ private fun DynamicSuccessContent(
                         onVideoFocused(HomeNavTabs.DYNAMIC, video, index, selectedUpMid)
                     },
                     onFocusRestored = onHomeVideoFocusRestored,
-                    entryFocusRequester = entryFocusRequester
+                    entryFocusRequester = entryFocusRequester,
+                    topFocusRequester = filterFocusRequester
                 )
         }
     }
@@ -1177,7 +1179,8 @@ private fun UpVideoContent(
     focusRestore: HomeVideoFocusRestore? = null,
     onVideoFocused: ((VideoItem, Int) -> Unit)? = null,
     onFocusRestored: () -> Unit = {},
-    entryFocusRequester: FocusRequester? = null
+    entryFocusRequester: FocusRequester? = null,
+    topFocusRequester: FocusRequester? = null
 ) {
     when (state) {
         UiState.Loading -> TvLoadingContent()
@@ -1198,7 +1201,8 @@ private fun UpVideoContent(
                     focusRestore = focusRestore,
                     onVideoFocused = onVideoFocused,
                     onFocusRestored = onFocusRestored,
-                    entryFocusRequester = entryFocusRequester
+                    entryFocusRequester = entryFocusRequester,
+                    topFocusRequester = topFocusRequester
                 )
             }
         }
