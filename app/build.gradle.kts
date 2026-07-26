@@ -28,8 +28,8 @@ android {
         applicationId = "com.nblt.tv"
         minSdk = 23
         targetSdk = 35
-        versionCode = 44
-        versionName = "1.0.0"
+        versionCode = 45
+        versionName = "1.0.1"
     }
 
 
