@@ -2248,6 +2248,14 @@ private fun NbltTvApp() {
                         }
                         playUrlState = UiState.Error(errorMessage)
                     },
+                    onPlaybackRecovered = { recoveredPlayUrl ->
+                        Log.i(
+                            TAG_PLAYER_DEBUG,
+                            "player recovered after transient error; restore success state " +
+                                "requestId=${recoveredPlayUrl.requestId}"
+                        )
+                        playUrlState = UiState.Success(recoveredPlayUrl)
+                    },
                     relatedPanelTitle = if (prefetchedUpVideos.isNotEmpty() || playerRelatedSources.sameUpVideos.isNotEmpty()) {
                         "\u8be5 UP \u4e3b\u5176\u4ed6\u89c6\u9891"
                     } else {
