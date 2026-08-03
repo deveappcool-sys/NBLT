@@ -32,7 +32,6 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.scale
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
@@ -86,7 +85,6 @@ fun PlayerScreen(
     onPlaybackEnded: () -> Unit,
     onReportPlaybackProgress: (VideoItem, PlayerUiState, PlaybackReportEvent) -> Unit,
     onPlaybackError: (String) -> Unit,
-    onPlaybackRecovered: (PlayUrl) -> Unit,
     relatedPanelTitle: String = "\u76f8\u5173\u63a8\u8350",
     relatedPanelOwner: VideoItem = video,
     relatedPanelVideos: List<VideoItem> = emptyList(),
@@ -1429,32 +1427,6 @@ fun PlayerScreen(
     }
 
     LaunchedEffect(
-        playUrlState,
-        playerUiState.isPlaying,
-        playerUiState.isBuffering,
-        retainedPlayUrl
-    ) {
-        val recoveredPlayUrl = retainedPlayUrl ?: return@LaunchedEffect
-        if (
-            playUrlState is UiState.Error &&
-            playerUiState.isPlaying &&
-            !playerUiState.isBuffering
-        ) {
-            Log.i(
-                TAG_RECOVERY,
-                "playback resumed after transient error; clear stale error overlay, " +
-                    "requestId=${recoveredPlayUrl.requestId}"
-            )
-            recoveryAttempt = 0
-            decoderRecoveryAttempts = 0
-            isRecovering = false
-            isRetryingSource = false
-            recoveryObservedLoading = false
-            onPlaybackRecovered(recoveredPlayUrl)
-        }
-    }
-
-    LaunchedEffect(
         (playUrlState as? UiState.Success)?.data?.requestId,
         playerUiState.isBuffering,
         isRecovering
@@ -1845,12 +1817,7 @@ fun PlayerScreen(
             )
         }
 
-        val isRuntimePlaybackError =
-            playUrlState is UiState.Error &&
-                hasRenderedFirstFrame &&
-                retainedPlayUrl != null
-
-        if (playUrlState is UiState.Error && !isRuntimePlaybackError) {
+        if (playUrlState is UiState.Error) {
             PlayerErrorContent(
                 title = displayTitle,
                 message = playUrlState.message,
@@ -1889,22 +1856,6 @@ fun PlayerScreen(
                     Log.i(TAG_DEBUG, "manual retry startPositionMs=$retryPosition, skip history resume=true")
                     onRetry()
                 }
-            )
-        }
-
-        if (isRuntimePlaybackError) {
-            Text(
-                text = "网络波动，等待播放恢复…",
-                color = Color.White,
-                fontSize = 16.sp,
-                fontWeight = FontWeight.Medium,
-                modifier = Modifier
-                    .align(Alignment.BottomCenter)
-                    .padding(bottom = 46.dp)
-                    .clip(RoundedCornerShape(18.dp))
-                    .background(Color.Black.copy(alpha = 0.72f))
-                    .border(1.dp, Color.White.copy(alpha = 0.18f), RoundedCornerShape(18.dp))
-                    .padding(horizontal = 18.dp, vertical = 9.dp)
             )
         }
 
